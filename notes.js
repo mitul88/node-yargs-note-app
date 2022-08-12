@@ -1,4 +1,4 @@
-const fs = requre('fs');
+const fs = require('fs');
 
 const getNotes = () => {
     return "Your notes ... "
