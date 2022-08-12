@@ -6,6 +6,8 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
     const notes = loadNotes();
+
+
     notes.push({
         title: title,
         body: body
@@ -20,7 +22,7 @@ const saveNotes = (notes) => {
 
 const loadNotes = () => {
     try{
-        const dataBuffer = fsreadFileSync('notes.json');
+        const dataBuffer = fs.readFileSync('notes.json');
         const dataJson = dataBuffer.toString();
         return JSON.parse(dataJson);
     } catch (e) {
