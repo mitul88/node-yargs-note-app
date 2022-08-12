@@ -1,3 +1,4 @@
+const { default: chalk } = require('chalk');
 const fs = require('fs');
 
 const getNotes = () => {
@@ -6,13 +7,21 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
     const notes = loadNotes();
-
-
-    notes.push({
-        title: title,
-        body: body
+    const duplicateNote = notes.filter((note)=> {
+        return note.title === title 
     })
-    saveNotes(notes);
+
+    if(duplicateNote.length === 0) {
+        notes.push({
+            title: title,
+            body: body
+        })
+        saveNotes(notes);
+        console.log(chalk.bgGreen.bold("New Note added"))
+    }
+    else {
+        console.log(chalk.bgRed.bold("Note Title is not available !!!"))
+    }
 }
 
 const saveNotes = (notes) => {
