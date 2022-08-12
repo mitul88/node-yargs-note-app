@@ -38,6 +38,19 @@ const listNotes = () => {
         console.log(chalk.blue.bold(index + 1 + ": " + note.title))
     })
 }
+const readNotes = (title) => {
+    const notes = loadNotes();
+    const findNote = notes.find(note=> note.title === title )
+    
+    if(findNote) {
+        console.log(findNote.body)
+        console.log(chalk.bgWhite.bold(findNote.title.toUpperCase()))
+    } else {
+        console.log(chalk.red.bold("Note is not available"))
+    }
+        
+    
+}
 
 const saveNotes = (notes) => {
     const dataJSON = JSON.stringify(notes);
@@ -59,4 +72,5 @@ module.exports = {
     addNote: addNote,
     removeNote: removeNote,
     listNotes: listNotes,
+    readNotes: readNotes
 };
