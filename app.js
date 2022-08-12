@@ -21,7 +21,7 @@ yargs.command({
         }
     },
     handler: function(argv) {
-        notes.addNote(argv.title, argv.body);
+        notes.addNote(argv.title.toLowerCase(), argv.body);
     }
 })
 
@@ -36,7 +36,7 @@ yargs.command({
         }       
     },
     handler: function(argv) {
-        notes.removeNote(argv.title);
+        notes.removeNote(argv.title.toLowerCase());
     }
 })
 

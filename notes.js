@@ -25,7 +25,19 @@ const addNote = (title, body) => {
 }
 
 const removeNote = (title)=> {
-    console.log(chalk.bgRed.bold(title + " removed"))
+    const notes = loadNotes();
+    const findNote = notes.filter((note)=> {
+        return note.title === title 
+    })
+    if(findNote.length === 0 ) {
+       console.log(chalk.bgCyan.bold(title + " Not found !!"))
+    } else {
+        const filteredNote = notes.filter((note)=> {
+            return note.title !== title 
+       })
+       saveNotes(filteredNote);
+       console.log(chalk.bgRed.bold(title + " removed"))
+    }
 }
 
 const saveNotes = (notes) => {
